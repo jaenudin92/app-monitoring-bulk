@@ -1,2 +1,3 @@
 JAE RESOLUSI
 - Konsisten belajar hal baru
+- Belajar node.js
