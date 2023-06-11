@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2023 at 06:14 PM
+-- Generation Time: Mar 22, 2023 at 11:15 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 7.4.30
 
@@ -147,9 +147,26 @@ INSERT INTO `tbl_product` (`id`, `item_group`, `kode_item`, `kode_standar`, `nam
 (10, 'EYEXPERT', 'SRM-ELB-W', 'STU-WEXLABS-PO-01/RND', 'Wardah Eyexpert Lash And Brow Serum', 'Wardah', 'FI16', 'FD007.WLBS.SFS', 'Standar bulk', 'RND', '1A-05', '2022-01-16', '2023-06-16', NULL, 0, 'Botol', 2, '1 Thn 5 Bln', 'Aktif'),
 (11, 'PAKET HAJI', 'S-W0HTNP-W40ML', 'STU-WHTTOCL-PO-01/RND', 'Wardah Head To Toe Cleanser Non Parfum', 'Wardah', 'GI20A', 'BULK PRODUKSI', 'Standar bulk', 'RND', '1A-05', '2022-07-20', '2023-07-20', NULL, 0, 'Pot', 2, '1 Thn', 'Aktif'),
 (12, 'HYDRA ROSE', 'SRM-RIH-W', 'STU-WROSESE-PO-01/RND', 'Wardah Hydra Rose Micro Gel Serum', 'Wardah', 'KH01', 'FT001.HRMGSE.DUI', 'Standar bulk', 'RND', '1A-06', '2021-11-01', '2022-12-31', NULL, 0, 'Pot', 2, '1 Thn 1 Bln 29 Hari', 'Aktif'),
-(13, 'HYDRA ROSE', 'FW-RHMF-W', 'STU-EROSCLE-PO-01/RND', 'Hydra Rose Gel To Foam Cleanser', 'Wardah', 'FH23', 'FT001.WHRGC.MFI', 'Standar bulk', 'RND', '1A-06', '2021-06-23', '2022-06-23', NULL, 0, 'Pot', 2, '1 Thn', 'Aktif'),
+(13, 'HYDRA ROSE', 'FW-RHMF-W', 'STU-EROSCLE-PO-01/RND', 'Hydra Rose Gel To Foam Cleanser', 'Wardah', 'FH23', 'FT001.WHRGC.MFI', 'Standar bulk', 'RND', '1A-06', '2021-06-23', '2023-07-23', NULL, 0, 'Pot', 2, '2 Thn 1 Bln', 'Aktif'),
 (14, 'LIGHTENING', 'FW-PBCFLO-W60ML', 'STU-WPBCWOC-PO-01/RND', 'Perfect Bright Creamy Wash Brightening + Oil Control', 'Wardah', 'DH26', 'FT001.1.PBCWBOC.MFI', 'Standar bulk', 'RND', '2A-01', '2021-04-26', '2022-04-26', NULL, 0, 'Pot', 3, '1 Thn', 'Aktif'),
-(15, 'LIGHTENING', 'MA-LESM-W', 'STU-WLESSHM-PO-01/RND', 'Lightening Essence Sheet Mask', 'Wardah', 'DI19', 'FT001-1.LESM.MFI', 'Standar bulk', 'RND', '1B-01', '2022-01-19', '2023-01-19', NULL, 0, 'Botol', 2, '1 Thn', 'Aktif');
+(15, 'LIGHTENING', 'MA-LESM-W', 'STU-WLESSHM-PO-01/RND', 'Lightening Essence Sheet Mask', 'Wardah', 'DI19', 'FT001-1.LESM.MFI', 'Standar bulk', 'RND', '1B-01', '2022-01-19', '2023-02-19', NULL, 0, 'Botol', 2, '1 Thn 1 Bln', 'Aktif');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_set_expired`
+--
+
+CREATE TABLE `tbl_set_expired` (
+  `masa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_set_expired`
+--
+
+INSERT INTO `tbl_set_expired` (`masa`) VALUES
+(31);
 
 -- --------------------------------------------------------
 
@@ -202,6 +219,12 @@ ALTER TABLE `tbl_koordinat`
 --
 ALTER TABLE `tbl_product`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_set_expired`
+--
+ALTER TABLE `tbl_set_expired`
+  ADD PRIMARY KEY (`masa`);
 
 --
 -- Indexes for table `tbl_user`

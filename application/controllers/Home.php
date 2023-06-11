@@ -41,6 +41,25 @@ class Home extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	public function getexpired()
+	{
+		$result = $this->db->query("select masa from tbl_set_expired limit 1")->row_array();
+
+		echo json_encode($result['masa']);
+	}
+
+	public function updateexpired()
+	{
+		$expired = $this->input->post('expired');
+		$update = $this->db->query("update tbl_set_expired set masa = '$expired'");
+
+		if ($update) {
+			$result = 'oke';
+		}
+
+		echo json_encode($result);
+	}
+
 	public function logout()
 	{
 		$this->session->unset_userdata('id');

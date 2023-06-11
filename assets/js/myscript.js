@@ -1358,3 +1358,38 @@ function downloadTemplate() {
 	var url = getBaseUrl()+'../assets/fileupload/Template_upload.xlsx';
 	window.location.href= url;
 }
+
+function modalSett(){
+	$('#formsett')[0].reset();
+	$('.msg').html('');
+	$('#modalsetting').modal('show');
+	$('.modal-title').text('Setting Masa Expired');
+
+	$.ajax({
+		url : getBaseUrl()+'home/getexpired',
+		type: 'GET',
+		dataType: 'JSON',
+		success:function(result){
+			$('#expired').val(result)
+		}
+	})
+}
+
+function saveSett(){
+	var expired = $('#expired').val();
+	if (expired >= 30) {
+		$.ajax({
+			url : getBaseUrl()+'home/updateexpired',
+			type: 'POST',
+			dataType: 'JSON',
+			data:{expired},
+			success:function(result){
+				if (response = 'oke') {
+					window.location.href=getBaseUrl();
+				}
+			}
+		})
+	}else{
+		$("#msg-expired").html("Tidak boleh kurang dari 30 hari")
+	}
+}

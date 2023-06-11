@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Brand extends CI_Controller {
+class Brand extends CI_Controller
+{
 
 	public function __construct()
 	{
@@ -10,7 +11,7 @@ class Brand extends CI_Controller {
 		if ($this->session->userdata('status') !=  "logged") {
 			redirect(base_url('login'));
 		};
-		$this->load->model('m_brand','brand');
+		$this->load->model('m_brand', 'brand');
 		$this->load->library('form_validation');
 	}
 
@@ -33,15 +34,15 @@ class Brand extends CI_Controller {
 			$row = array();
 			$row[] = $no;
 			$row[] = $brand->brand;
-            //add html for action
+			//add html for action
 			$row[] = '<div class="dropdown">
 			<button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
 			<i class="bx bx-dots-vertical-rounded"></i>
 			</button>
 			<div class="dropdown-menu">
-			<a class="dropdown-item" href="javascript:void(0);" onclick="editBrand('."'".$brand->id."'".')">
+			<a class="dropdown-item" href="javascript:void(0);" onclick="editBrand(' . "'" . $brand->id . "'" . ')">
 			<i class="bx bx-edit-alt me-1"></i> Edit</a>
-			<a class="dropdown-item" href="javascript:void(0);" onclick="deleteBrand('."'".$brand->id."'".')">
+			<a class="dropdown-item" href="javascript:void(0);" onclick="deleteBrand(' . "'" . $brand->id . "'" . ')">
 			<i class="bx bx-trash me-1"></i> Delete</a>
 			</div>
 			</div>';
@@ -55,7 +56,7 @@ class Brand extends CI_Controller {
 			"recordsFiltered" => $this->brand->count_filtered(),
 			"data" => $data,
 		);
-        //output to json format
+		//output to json format
 		echo json_encode($output);
 	}
 
@@ -96,16 +97,15 @@ class Brand extends CI_Controller {
 
 	private function _validate()
 	{
-		$this->form_validation->set_rules("brand","Brand","required|trim|min_length[2]|is_unique[tbl_brand.brand]");
-		if ($this->form_validation->run() == false ) {
+		$this->form_validation->set_rules("brand", "Brand", "required|trim|min_length[2]|is_unique[tbl_brand.brand]");
+		if ($this->form_validation->run() == false) {
 			$response = [
 				'error' => true,
 				'brand_error' => form_error('brand'),
 			];
 
 			echo json_encode($response);
-			exit();     
+			exit();
 		}
-
 	}
 }

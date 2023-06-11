@@ -68,6 +68,7 @@
 							<div data-i18n="Boxicons">Produk</div>
 						</a>
 					</li>
+
 					<?php };?>
 					<li class="menu-item" id="menu-g">
 						<a href="<?= base_url('Product/Inputproduct'); ?>" class="menu-link">
@@ -101,20 +102,16 @@
 				</div>
 
 				<div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+					<?php if ($datauser['level'] == 'Admin' || $datauser['level'] == 'Leader') { ?>
 					<!-- Search -->
-					<!-- <div class="navbar-nav align-items-center">
-						<div class="nav-item d-flex align-items-center">
-							<i class="bx bx-search fs-4 lh-0"></i>
-							<input
-							type="text"
-							class="form-control border-0 shadow-none"
-							placeholder="Search..."
-							aria-label="Search..."
-							/>
-						</div>
-					</div> -->
+					<div class="navbar-nav align-items-center">
+						<a href="javascript:void(0)" onclick="modalSett()" title="Setting Masa Expired">
+							<i class="menu-icon bx bx-cog"></i>
+						</a>
+					</div>
 					<!-- /Search -->
-
+					<?php }; ?>
+					
 					<ul class="navbar-nav flex-row align-items-center ms-auto">
 						<!-- Place this tag where you want the button to render. -->
 						<li class="nav-item lh-1 me-3">
@@ -161,3 +158,37 @@
 			</nav>
 
 			<!-- / Navbar -->
+
+<!-- Modal -->
+	<div class="modal fade" id="modalsetting" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalCenterTitle">Modal title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<form action="#" id="formsett" class="form-horizontal" enctype="multipart/form-data">
+					<div class="modal-body form">
+						<div class="form-body">
+							<div class="mb-3">
+								<label for="expired" class="form-label">Sett Masa Expired</label>
+								<div class="row">
+									<div class="col-md-8">
+										<input type="number" class="form-control" id="expired" name="expired" min="0" />
+									</div>
+									<div class="col-md-4">
+										<p>Days</p>
+									</div>
+								</div>
+								<small id="msg-expired" class="msg text-danger"></small>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" id="btnSavebrand" onclick="saveSett()" class="btn btn-primary rounded-pill">Save</button>
+						<button type="button" class="btn btn-danger rounded-pill" data-bs-dismiss="modal">Cancel</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
